@@ -63,7 +63,7 @@
         printf("Tong: a + b = %d", a + b);
     }
     ```
-    
+   
     #### File2.c
     ```c
     #include <stdio.h>
@@ -88,8 +88,8 @@
    - **Định Nghĩa:** Dùng để định nghĩa, thay thế bằng 1 giá trị hoặc (chuỗi) khác
      - **Ví dụ 1:** : #define Pi 3.14 ( Sau quá trình tiền xử các thành phần có chứa Pi thì sẽ được chuyển thành giá trị 3.14 )
      - **Ví dụ 2:**
-    #### main.c
-    ```c
+  #### main.c
+  ```c
     #include <stdio.h>  
     
     #define FULL_NAME(name,cmd)   \
@@ -99,14 +99,7 @@
 
     FULL_NAMEC(test1,"Nguyen Cong Phuong\n");
     FULL_NAME(test2,"Pham Van Ky\n");
-    
-    ```
 
-    #### main.c
-    ```c
-    Nguyen Cong Phuong
-    Pham Van Ky
-    ```
        
 
 </details>
