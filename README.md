@@ -85,9 +85,16 @@
     - Không được `#include` hai file giống nhau trong cùng một mã nguồn
 
    **#define:**
-   - **Định Nghĩa:** Dùng để định nghĩa, thay thế bằng 1 giá trị hoặc (chuỗi) khác
-     - **Ví dụ 1:** : #define Pi 3.14 ( Sau quá trình tiền xử các thành phần có chứa Pi thì sẽ được chuyển thành giá trị 3.14 )
-     - **Ví dụ 2:**
+   - **Định Nghĩa:** Dùng để định nghĩa lại 1 khái niệm, bằng các giá trị, chuỗi đơn giản hơn.
+   - 
+   - **Ứng dụng:**
+   - Dùng để định nghĩa, thay thế bằng 1 giá trị hoặc (chuỗi) khác đơn giản hơn 
+   - Dùng để tạo nhiều hàm, có cấu trúc giống nhau, tối ưu chương trình hơn 
+   - Kết hợp với toán tử ## dùng để nối chuỗi 
+   - Sử dụng toán tử # để chuyển 1 định dạng bất kỳ thành chuỗi 
+
+     - **Ví dụ 1:**  #define Pi 3.14 ( Sau quá trình tiền xử các thành phần có chứa Pi thì sẽ được chuyển thành giá trị 3.14 )
+     - **Ví dụ 2:** Dùng để tạo nhiều hàm, có cấu trúc giống nhau
 #### main.c
   ```c
     #include <stdio.h>  
@@ -106,7 +113,108 @@
 void test1 (){ printf("Nguyen Cong Phuong\n"); };
 void test2 (){ printf("Pham Van Ky\n"); };
 ```
-       
+- **Ví dụ 3:** Kết hợp với toán tử ## dùng để nối chuỗi
+#### main.c
+  ```c
+    #define FULL_NAME(name)   \
+     int int_##name ;             \
+     float float_##name
+
+     FULL_NAME(Tong); // Dùng để tạo ra nhiều biến mới, có cùng kiểu dữ liệu 
+```
+
+#### main.i
+  ```c
+int int_Tong ;
+float float_Tong;
+```
+- **Ví dụ 4:** Sử dụng toán tử # để chuyển 1 định dạng bất kỳ thành chuỗi
+#### main.c
+  ```c
+    #define FULL_NAME2(name)   \
+    printf(#name)
+
+   FULL_NAME(LeHungAnh); 
+```
+
+#### main.i
+  ```c
+    printf("LeHungAnh");
+```
+
+**#unfine:** 
+**Định Nghĩa:** Dùng để hủy 1 macro đã được định nghĩa trước đó 
+-**Ví dụ:** 
+#### main.c
+  ```c
+#include <stdio.h>
+
+// undef dùng để hủy 1 macro đã định nghĩa trước đó
+#define HCN 50 
+
+int main(){
+    printf("Hinh Chu Nhat : %d\n", HCN);
+
+#undef HCN 
+#define HCN 30
+
+   printf("Hinh Chu Nhat : %d\n", HCN);
+}
+```
+
+#### main.c
+  ```c
+Hinh Chu Nhat : 50
+Hinh Chu Nhat : 30
+```
+
+**#ifndef** 
+**Định Nghĩa:** 
+- Dùng để kiểm tra xem 1 macro đã được định nghĩa chưa, nếu chưa định nghĩa thì nó sẽ được định nghĩa lại ở phía dưới chương trình
+- Dùng để tránh lặp mã nguồn của chương trình
+
+- **Ví dụ:**
+#### main.c
+  ```c
+#include <stdio.h>
+
+#ifndef HCN // Dùng để kiểm tra HCN đã được định nghĩa chưa nếu chưa thì sẽ được định nghĩa lại và chương trình [#inndef - #endif], được thực thi !!!
+#define HCN 5
+
+int arr[HCN] ={1,2,3,4,9};
+
+#endif // Kết thúc chỉ thị điều kiện
+
+```
+
+**#ifdef** 
+**Định Nghĩa:** Dùng để kiểm tra xem 1 macro đã được định nghĩa chưa, nếu chưa định nghĩa thì chương trình phía dưới không thực thi
+
+- **Ví dụ:**
+#### main.c
+  ```c
+#include <stdio.h>
+
+#define HCN 5
+#ifdef HCN // Dùng để kiểm tra HCN đã được định nghĩa chưa nếu chưa định nghĩa thì chương trình [#inndef - #endif] sẽ không được thực thi !!!
+
+int arr[HCN] ={1,2,3,4,9};
+
+#endif // Kết thúc chỉ thị điều kiện
+
+```
+
+**#if, #elif, #else #endif** 
+**Định Nghĩa:** 
+-#if sử dụng để bắt đầu một điều kiện tiền xử lý.
+-Nếu điều kiện trong #if là đúng, các dòng mã nguồn sau #if sẽ được biên dịch
+-Nếu sai, các dòng mã nguồn sẽ bị bỏ qua đến khi gặp #endif
+-#elif dùng để thêm một điều kiện mới khi điều kiện trước đó là #if hoặc #elif là sai
+-#else dùng khi không có điều kiện nào ở trên đúng
+
+
+
+
 
 </details>
 
