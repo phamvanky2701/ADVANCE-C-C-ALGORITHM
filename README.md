@@ -92,14 +92,20 @@
     ```c
     #include <stdio.h>  
     
-    #define CREATE_FUNC(name,cmd)   \
+    #define FULL_NAME(name,cmd)   \
     void name (){                    \
-    printf(cmd);                  \
+        printf(cmd);                  \
     }
 
-    CREATE_FUNC(test1,"Nguyen Cong Phuong\n");
-    CREATE_FUNC(test2,"Pham Van Ky\n");
-    CREATE_FUNC(test3,"Sign Group\n");
+    FULL_NAMEC(test1,"Nguyen Cong Phuong\n");
+    FULL_NAME(test2,"Pham Van Ky\n");
+    
+    ```
+
+    #### main.c
+    ```c
+    Nguyen Cong Phuong
+    Pham Van Ky
     ```
        
 
