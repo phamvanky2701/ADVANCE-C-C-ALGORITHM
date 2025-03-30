@@ -206,11 +206,11 @@ int arr[HCN] ={1,2,3,4,9};
 
 **#if, #elif, #else #endif** 
 **Định Nghĩa:** 
--#if sử dụng để bắt đầu một điều kiện tiền xử lý.
--Nếu điều kiện trong #if là đúng, các dòng mã nguồn sau #if sẽ được biên dịch
--Nếu sai, các dòng mã nguồn sẽ bị bỏ qua đến khi gặp #endif
--#elif dùng để thêm một điều kiện mới khi điều kiện trước đó là #if hoặc #elif là sai
--#else dùng khi không có điều kiện nào ở trên đúng
+  - #if sử dụng để bắt đầu một điều kiện tiền xử lý.
+  - Nếu điều kiện trong #if là đúng, các dòng mã nguồn sau #if sẽ được biên dịch
+  - Nếu sai, các dòng mã nguồn sẽ bị bỏ qua đến khi gặp #endif
+  - #elif dùng để thêm một điều kiện mới khi điều kiện trước đó là #if hoặc #elif là sai
+  - #else dùng khi không có điều kiện nào ở trên đúng
 
 
 
