@@ -88,7 +88,7 @@
    - **Định Nghĩa:** Dùng để định nghĩa, thay thế bằng 1 giá trị hoặc (chuỗi) khác
      - **Ví dụ 1:** : #define Pi 3.14 ( Sau quá trình tiền xử các thành phần có chứa Pi thì sẽ được chuyển thành giá trị 3.14 )
      - **Ví dụ 2:**
-  #### main.c
+#### main.c
   ```c
     #include <stdio.h>  
     
@@ -99,6 +99,12 @@
 
     FULL_NAMEC(test1,"Nguyen Cong Phuong\n");
     FULL_NAME(test2,"Pham Van Ky\n");
+```
+
+#### main.i
+  ```c
+void test1 (){ printf("Nguyen Cong Phuong\n"); };
+void test2 (){ printf("Pham Van Ky\n"); };
 ```
        
 
