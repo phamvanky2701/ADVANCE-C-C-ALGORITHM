@@ -1,4 +1,4 @@
-# 📌 Mục Lục
+# ADVANCE C/C++ AND ALGORITHM
 
 <details>
   <summary>📂 Bài 1: Compiler + Macro</summary>
@@ -81,3 +81,8 @@
     - `#include "file.c"`: Dùng để gọi file tự định nghĩa
     - Không được `#include` hai file giống nhau trong cùng một mã nguồn
 </details>
+
+<details>
+  <summary>📂 Bài 2: STDARG - ASSERT</summary>
+</details>
+  
