@@ -168,7 +168,7 @@ Hinh Chu Nhat : 50
 Hinh Chu Nhat : 30
 ```
 
-**#ifndef** 
+**#ifndef:** 
   -**Định Nghĩa:** 
 - Dùng để kiểm tra xem 1 macro đã được định nghĩa chưa, nếu chưa định nghĩa thì nó sẽ được định nghĩa lại ở phía dưới chương trình
 - Dùng để tránh lặp mã nguồn của chương trình
@@ -187,7 +187,7 @@ int arr[HCN] ={1,2,3,4,9};
 
 ```
 
-**#ifdef** 
+**#ifdef:** 
   -**Định Nghĩa:** Dùng để kiểm tra xem 1 macro đã được định nghĩa chưa, nếu chưa định nghĩa thì chương trình phía dưới không thực thi
 
 - **Ví dụ:**
@@ -204,8 +204,8 @@ int arr[HCN] ={1,2,3,4,9};
 
 ```
 
-**#if, #elif, #else #endif** 
-  -**Định Nghĩa:** 
+**#if, #elif, #else #endif:** 
+   **Định Nghĩa:** 
   - #if sử dụng để bắt đầu một điều kiện tiền xử lý.
   - Nếu điều kiện trong #if là đúng, các dòng mã nguồn sau #if sẽ được biên dịch
   - Nếu sai, các dòng mã nguồn sẽ bị bỏ qua đến khi gặp #endif
