@@ -7,6 +7,8 @@
   **Định Nghĩa:** Compiler là quá trình chuyển đổi từ ngôn ngữ bậc cao (C, C++, Java...) sang ngôn ngữ bậc thấp (mã máy - 00011101), giúp chương trình hiểu và thực thi được.
   
   **Quá Trình Compiler:**
+    ![Compiler Process](https://example.com/compiler-diagram.png)
+
   Quá trình biên dịch gồm 4 giai đoạn:
   
   - **Preprocessing (Tiền xử lý):**
