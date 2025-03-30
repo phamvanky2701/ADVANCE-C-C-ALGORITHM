@@ -90,14 +90,16 @@
      - **Ví dụ 2:**
     #### main.c
     ```c
+    #include <stdio.h>  
+    
     #define CREATE_FUNC(name,cmd)   \
-void name (){                    \
+    void name (){                    \
     printf(cmd);                  \
-}
+    }
 
-CREATE_FUNC(test1,"Nguyen Cong Phuong\n");
-CREATE_FUNC(test2,"Pham Van Ky\n");
-CREATE_FUNC(test3,"Sign Group\n");
+    CREATE_FUNC(test1,"Nguyen Cong Phuong\n");
+    CREATE_FUNC(test2,"Pham Van Ky\n");
+    CREATE_FUNC(test3,"Sign Group\n");
     ```
        
 
