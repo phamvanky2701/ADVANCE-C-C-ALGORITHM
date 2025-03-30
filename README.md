@@ -48,7 +48,7 @@
       ```
   
   ## Macro
-  **Định Nghĩa:** Macro là các từ khóa định nghĩa hoạt động trong giai đoạn tiền xử lý (Preprocessing). Các nhóm chính:
+  **Định Nghĩa:** Macro là các từ khóa định nghĩa hoạt động trong giai đoạn tiền xử lý (Preprocessing). Có 3 nhóm chính:
   - `#include`
   - `#define`, `#undef`
   - `#if`, `#elif`, `#else`, `#ifdef`, `#ifndef`
@@ -83,6 +83,24 @@
     - `#include <stdio.h>`: Dùng để gọi thư viện chuẩn của C
     - `#include "file.c"`: Dùng để gọi file tự định nghĩa
     - Không được `#include` hai file giống nhau trong cùng một mã nguồn
+
+   **#define:**
+   - **Định Nghĩa:** Dùng để định nghĩa, thay thế bằng 1 giá trị hoặc (chuỗi) khác
+     - **Ví dụ 1:** : #define Pi 3.14 ( Sau quá trình tiền xử các thành phần có chứa Pi thì sẽ được chuyển thành giá trị 3.14 )
+     - **Ví dụ 2:**
+    #### main.c
+    ```c
+    #define CREATE_FUNC(name,cmd)   \
+void name (){                    \
+    printf(cmd);                  \
+}
+
+CREATE_FUNC(test1,"Nguyen Cong Phuong\n");
+CREATE_FUNC(test2,"Pham Van Ky\n");
+CREATE_FUNC(test3,"Sign Group\n");
+    ```
+       
+
 </details>
 
 <details>
