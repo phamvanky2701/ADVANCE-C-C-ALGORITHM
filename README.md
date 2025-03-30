@@ -1,26 +1,28 @@
-# Mục Lục
-1. [COMPILER](#i-compiler)
-   1. [Định Nghĩa](#1-định-nghĩa)
-   2. [Quá Trình Compiler](#2-quá-trình-compiler)
-      - [Preprocessing (Tiền xử lý)](#a-preprocessing-tiền-xử-lý)
-      - [Compiler](#b-compiler)
-      - [Assembling](#c-assembling)
-      - [Linking](#d-linking)
-2. [MACRO](#ii-macro)
-   1. [Định Nghĩa](#1-định-nghĩa-1)
-   2. [#include](#a-include)
+# 📌 Mục Lục
+
+📂 **[COMPILER](#i-compiler)**
+- 📄 **[Định Nghĩa](#1-định-nghĩa)**
+- 🔄 **[Quá Trình Compiler](#2-quá-trình-compiler)**
+  - ⚙️ **[Preprocessing (Tiền xử lý)](#a-preprocessing-tiền-xử-lý)**
+  - 🔍 **[Compiler](#b-compiler)**
+  - 🛠️ **[Assembling](#c-assembling)**
+  - 🔗 **[Linking](#d-linking)**
+
+📂 **[MACRO](#ii-macro)**
+- 📄 **[Định Nghĩa](#1-định-nghĩa-1)**
+- 🔹 **[#include](#a-include)**
 
 ---
 
-# I. COMPILER
+# 🖥️ I. COMPILER
 
-## 1. Định Nghĩa
+## 1️⃣ Định Nghĩa
 Compiler là quá trình chuyển đổi từ ngôn ngữ bậc cao (C, C++, Java...) sang ngôn ngữ bậc thấp (mã máy - 00011101), giúp chương trình hiểu và thực thi được.
 
-## 2. Quá Trình Compiler
+## 2️⃣ Quá Trình Compiler
 Quá trình biên dịch gồm 4 giai đoạn:
 
-### a. Preprocessing (Tiền xử lý)
+### ⚙️ a. Preprocessing (Tiền xử lý)
 - Xử lý các lệnh bắt đầu bằng dấu `#` (Ví dụ: `#include <stdio.h>`, `#define`, `#if`...)
 - Thay thế các macro đã được định nghĩa trước (Ví dụ: `#define Pi 3.14`)
 - Xóa bỏ comment (chú thích)
@@ -30,7 +32,7 @@ Quá trình biên dịch gồm 4 giai đoạn:
   gcc -E tenfile.c -o tenfile.i
   ```
 
-### b. Compiler
+### 🔍 b. Compiler
 - Chuyển đổi từ `file.i` sang `file.s`
 - Phân tích cú pháp, kiểm tra lỗi
 - Tối ưu mã nguồn giúp chương trình hoạt động hiệu quả hơn
@@ -39,7 +41,7 @@ Quá trình biên dịch gồm 4 giai đoạn:
   gcc -S tenfile.i -o tenfile.s
   ```
 
-### c. Assembling
+### 🛠️ c. Assembling
 - Chuyển từ `file.s` sang `file.o`
 - Trình dịch assembler chuyển assembly code thành mã máy (000110010)
 - **Cú pháp chạy:**
@@ -47,7 +49,7 @@ Quá trình biên dịch gồm 4 giai đoạn:
   gcc -c tenfile.s -o tenfile.o
   ```
 
-### d. Linking
+### 🔗 d. Linking
 - Chuyển từ `file.o` sang `file.exe`
 - Liên kết các file lại với nhau
 - **Cú pháp chạy:**
@@ -57,27 +59,27 @@ Quá trình biên dịch gồm 4 giai đoạn:
 
 ---
 
-# II. MACRO
+# 📝 II. MACRO
 
-## 1. Định Nghĩa
+## 1️⃣ Định Nghĩa
 Macro là các từ khóa định nghĩa hoạt động trong giai đoạn tiền xử lý (Preprocessing). Các nhóm chính:
 - `#include`
 - `#define`, `#undef`
 - `#if`, `#elif`, `#else`, `#ifdef`, `#ifndef`
 
-## a. `#include`
-### Định Nghĩa
+## 🔹 a. `#include`
+### 📌 Định Nghĩa
 Dùng để chèn nội dung của một file vào file khác.
 
-### Ví dụ:
-#### File1.c
+### 📂 Ví dụ:
+#### 📄 File1.c
 ```c
 void Tong(int a, int b){
     printf("Tong: a + b = %d", a + b);
 }
 ```
 
-#### File2.c
+#### 📄 File2.c
 ```c
 #include <stdio.h>
 #include "File1.c"
@@ -88,11 +90,11 @@ int main(){
 }
 ```
 
-### Ưu điểm:
+### ✅ Ưu điểm:
 - Tái sử dụng mã nguồn, tránh lặp code không cần thiết
 - Quản lý file chương trình hiệu quả
 
-### Lưu ý:
+### ⚠️ Lưu ý:
 - `#include <stdio.h>`: Dùng để gọi thư viện chuẩn của C
 - `#include "file.c"`: Dùng để gọi file tự định nghĩa
 - Không được `#include` hai file giống nhau trong cùng một mã nguồn
