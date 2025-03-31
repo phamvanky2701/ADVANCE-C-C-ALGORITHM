@@ -220,7 +220,6 @@ int arr[HCN] ={1,2,3,4,9};
 
 <details>
   <summary>📂 Bài 2: STDARG - ASSERT</summary>
-  # BÀI 2: Thư Viện Stdarg + Assert
 
 ## I. Thư Viện Stdarg
 ### a. Khái niệm
@@ -286,10 +285,10 @@ va_end(tenbien);
 
 ---
 
-## **Ví dụ 1: Tính tổng với số lượng tham số không cố định**
+## **Ví dụ 1: Tính tổng với số lượng tham số không cố định, nhưng biết được số lượng tham số truyền vào cho 1 lần tính toán**
 
 ### **Ý tưởng:**
-Làm sao để tính tổng khi số lượng tham số truyền vào không cố định? Thư viện `stdarg` sẽ giúp giải quyết bài toán này bằng cách truyền số lượng tham số trước.
+Làm sao để giải quyết bài toán, tính tổng khi biết số lượng truyền vào không cố định, khi thì truyền 3 tham số , khi thì truyền 4 tham số, nhưng để giải quyết bài toán này ? Thư viện Stdarg sẽ hỗ trợ và giải quyết bài toán này, để giải quyết bài toán Ví dụ 1 này ta cần biết số lượng tham số truyền vào trong 1 lần tính.
 
 ```c
 #include <stdio.h>
@@ -315,7 +314,7 @@ int main(){
 
 ---
 
-## **Ví dụ 2: Không cần biết trước số lượng tham số**
+## **Ví dụ 2: Không cần biết trước số lượng tham số 1 lần truyền vào, cho 1 lần tính toán**
 ### **Ý tưởng:**
 Thêm số `0` vào cuối tham số truyền vào để làm điều kiện dừng vòng lặp.
 
@@ -346,7 +345,7 @@ int main(){
 
 ---
 
-## **Ví dụ 3: Xử lý khi input chứa số 0**
+## **Ví dụ 3: Xử lý khi input truyền vào chứa số 0, không phải ở cuối**
 ### **Ý tưởng:**
 Sử dụng một ký hiệu đặc biệt thay vì số `0` để đánh dấu điểm kết thúc.
 
