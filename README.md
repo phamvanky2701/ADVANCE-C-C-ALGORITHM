@@ -440,6 +440,19 @@ int main(){
 }
 ```
 
+```c
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS D:\LAP_TRINH_C_C++> cd "d:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert\" ; if ($?) { gcc main.c -o main } ; if
+($?) { .\main }
+Assertion failed: sum == 5 && " Gia Tri Sum Phai Bang 10 !!
+This application has requested the Runtime to terminate it in an unusual way.
+Please contact the application's support team for more information.
+PS D:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert>
+```
+
+
 ---
 
 
