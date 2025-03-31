@@ -220,5 +220,190 @@ int arr[HCN] ={1,2,3,4,9};
 
 <details>
   <summary>📂 Bài 2: STDARG - ASSERT</summary>
+  # BÀI 2: Thư Viện Stdarg + Assert
+
+## I. Thư Viện Stdarg
+### a. Khái niệm
+Thư viện `stdarg` được ứng dụng cho các trường hợp làm việc với các hàm có số lượng input đầu vào không cố định.
+
+### b. Cấu trúc của thư viện stdarg
+
+- `va_list`: Là một kiểu dữ liệu trong C, được định nghĩa trong thư viện `<stdarg.h>`, dùng để xử lý danh sách các đối số có số lượng không xác định (variadic arguments).
+
+#### **Cú pháp:**
+```c
+va_list tenbien;
+```
+Ví dụ:
+```c
+void Tong (int sum, ...){ // … : 4,5,3.14, "hello"
+    va_list args; // Tạo một biến args kiểu dữ liệu char*
+}
+```
+
+- `va_start`: Khởi tạo danh sách đối số, loại bỏ các thành phần trước dấu `...` và giữ lại các thành phần sau `...`.
+
+#### **Cú pháp:**
+```c
+va_start(tenbien, tenbienloaibo);
+```
+Ví dụ:
+```c
+void Tong (int sum, ...){
+    va_list args;
+    va_start(args, sum); // Loại bỏ các thành phần trước '...', giữ lại các đối số sau '...'
+}
+```
+
+- `va_arg`: Lấy ra từng đối số (mỗi lần gọi sẽ lấy ra một đối số).
+
+#### **Cú pháp:**
+```c
+va_arg(tenbien, kieudulieu);
+```
+Ví dụ:
+```c
+void Tong (int sum, ...){
+    va_list args;
+    va_start(args, sum);
+    
+    printf("[1] = %d\n", va_arg(args, int));
+    printf("[2] = %d\n", va_arg(args, int));
+    printf("[3] = %.2f\n", va_arg(args, double));
+    printf("[4] = %s\n", va_arg(args, char*));
+}
+```
+
+- `va_end`: Kết thúc chương trình
+
+#### **Cú pháp:**
+```c
+va_end(tenbien);
+```
+
+### **Ứng dụng:**
+- Giải quyết các bài toán không xác định được số lượng tham số đầu vào.
+
+---
+
+## **Ví dụ 1: Tính tổng với số lượng tham số không cố định**
+
+### **Ý tưởng:**
+Làm sao để tính tổng khi số lượng tham số truyền vào không cố định? Thư viện `stdarg` sẽ giúp giải quyết bài toán này bằng cách truyền số lượng tham số trước.
+
+```c
+#include <stdio.h>
+#include <stdarg.h>
+
+void sum(int count, ...){
+    va_list args;
+    va_start(args, count);
+    
+    int tong = 0;
+    for (int i = 0; i < count; i++){
+        tong += va_arg(args, int);
+    }
+    
+    va_end(args);
+    printf("Sum = %d", tong);
+}
+
+int main(){
+    sum(4, 4, 5, 6, 7);
+}
+```
+
+---
+
+## **Ví dụ 2: Không cần biết trước số lượng tham số**
+### **Ý tưởng:**
+Thêm số `0` vào cuối tham số truyền vào để làm điều kiện dừng vòng lặp.
+
+```c
+#include <stdio.h>
+#include <stdarg.h>
+
+#define tong(...) sum(__VA_ARGS__, 0)
+
+void sum(int count, ...){
+    va_list args;
+    va_start(args, count);
+    
+    int result = count;
+    int value;
+    while ((value = va_arg(args, int)) != 0){
+        result += value;
+    }
+    
+    printf("Sum = %d", result);
+    va_end(args);
+}
+
+int main(){
+    tong(1, 2, 3, 4);
+}
+```
+
+---
+
+## **Ví dụ 3: Xử lý khi input chứa số 0**
+### **Ý tưởng:**
+Sử dụng một ký hiệu đặc biệt thay vì số `0` để đánh dấu điểm kết thúc.
+
+```c
+#include <stdio.h>
+#include <stdarg.h>
+
+#define tong(...) sum(__VA_ARGS__, "a")
+
+int sum(int count, ...){
+    va_list args;
+    va_list args1;
+    
+    va_start(args, count);
+    va_copy(args1, args);
+    
+    int result = count;
+    while ((va_arg(args1, char*)) != (char*)"a"){
+        result += va_arg(args, int);
+    }
+    
+    va_end(args);
+    return result;
+}
+
+int main(){
+    printf("Sum = %d", tong(1, 2, 3, 4));
+}
+```
+
+---
+
+## II. Thư Viện `assert`
+### **Khái niệm:**
+- `assert` là một macro có sẵn trong thư viện `<assert.h>`.
+- Dùng để kiểm tra chương trình và báo lỗi nếu điều kiện không đúng.
+- Nếu điều kiện kiểm tra đúng, chương trình tiếp tục thực thi bình thường, nếu sai, chương trình sẽ dừng lại và báo lỗi.
+- Được sử dụng chủ yếu để debug chương trình.
+
+### **Ví dụ:**
+```c
+#include <stdio.h>
+#include <assert.h>
+
+int tong(int a, int b){
+    int sum = a + b;
+    assert(sum == 5 && "Gia Tri Sum Phai Bang 5 !!!");
+    printf("sum = %d", sum);
+}
+
+int main(){
+    tong(7, 3);
+}
+```
+
+---
+
+
 </details>
   
