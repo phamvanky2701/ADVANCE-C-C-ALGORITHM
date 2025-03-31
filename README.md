@@ -292,23 +292,34 @@ Làm sao để giải quyết bài toán, tính tổng khi biết số lượng 
 
 ```c
 #include <stdio.h>
-#include <stdarg.h>
+#include <stdarg.h> 
 
-void sum(int count, ...){
-    va_list args;
-    va_start(args, count);
-    
-    int tong = 0;
-    for (int i = 0; i < count; i++){
-        tong += va_arg(args, int);
-    }
-    
-    va_end(args);
-    printf("Sum = %d", tong);
+void sum(int count, ...) // count : tham số cố định , ... đại diện cho số lượng đối số truyền vào dựa vào tham số cố định
+{  
+
+     va_list args ;
+     // int count : “4” ; ... : “4,5,6,7”
+     // args = “int cout,4,5,6,7”
+
+     va_start(args,count); 
+     //args = “4,5,6,7”
+
+     
+     int tong = 0;
+
+     for (int i = 0; i < count; i++) // int i = 0 ; i<4 ; i++
+     {
+        tong = tong + va_arg(args,int);
+     }
+     
+     va_end(args);
+
+     printf("Sum = %d", tong);
+
 }
 
 int main(){
-    sum(4, 4, 5, 6, 7);
+  sum(4,4,5,6,7);
 }
 ```
 
@@ -319,27 +330,42 @@ int main(){
 Thêm số `0` vào cuối tham số truyền vào để làm điều kiện dừng vòng lặp.
 
 ```c
-#include <stdio.h>
-#include <stdarg.h>
+#include<stdio.h>
+#include<stdarg.h>
 
-#define tong(...) sum(__VA_ARGS__, 0)
+#define tong(...) sum(__VA_ARGS__,0) // Thêm con số 0 ở cuối tham số.
+//           tong (1,2,3,4)       sum(1,2,3,4,0)   
+// __VA_ARGS__ : 1,2,3,4 
+// __VA_ARGS__ : Dùng để lưu các thành phần không xác định của “…”
 
-void sum(int count, ...){
-    va_list args;
-    va_start(args, count);
-    
-    int result = count;
-    int value;
-    while ((value = va_arg(args, int)) != 0){
-        result += value;
-    }
-    
-    printf("Sum = %d", result);
-    va_end(args);
+void sum(int count,...){ //sum (1,2,3,4,0) 
+
+     va_list args ;
+     // args = " int count,2,3,4,0"
+
+     va_start(args,count);
+     // args = "2,3,4,0"
+
+     int result = count ;
+     // result = 1
+
+     int value ;
+
+     while ((value = va_arg(args,int)) != 0) // Kết thúc khi va_arg = 0
+     {
+        result = result + value;
+     }
+     
+     printf("Sum = %d", result);
+
+     va_end(args);
+
 }
 
 int main(){
-    tong(1, 2, 3, 4);
+ 
+   tong(1,2,3,4);
+
 }
 ```
 
@@ -350,29 +376,42 @@ int main(){
 Sử dụng một ký hiệu đặc biệt thay vì số `0` để đánh dấu điểm kết thúc.
 
 ```c
-#include <stdio.h>
-#include <stdarg.h>
+#include<stdio.h>
+#include<stdarg.h>
 
 #define tong(...) sum(__VA_ARGS__, "a")
+// tong (1,2,3,4) sum(1,2,3,4,a)
 
-int sum(int count, ...){
-    va_list args;
-    va_list args1;
-    
-    va_start(args, count);
-    va_copy(args1, args);
-    
-    int result = count;
-    while ((va_arg(args1, char*)) != (char*)"a"){
-        result += va_arg(args, int);
-    }
-    
-    va_end(args);
-    return result;
+int sum(int count,...){
+
+     va_list args ;
+     // args = " int count,2,3,4,a"
+     va_list args1;
+
+     va_start(args, count);
+     // args = "2,3,4,a"
+
+     va_copy(args1, args); // Copy dữ liệu args sang args1
+     // args1 = "2,3,4,a"
+
+     int result = count ;
+     // result = 1
+
+     while ((va_arg(args1, char*)) != (char*)"a") // Kết thúc khi va_arg1 = a
+     {
+        result = result + va_arg(args,int);
+     }
+     
+     va_end(args);
+
+     return result;
+
 }
 
 int main(){
-    printf("Sum = %d", tong(1, 2, 3, 4));
+ 
+    printf("Sum = %d", tong(1,2,3,4));
+
 }
 ```
 
