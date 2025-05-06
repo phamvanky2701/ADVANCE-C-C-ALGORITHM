@@ -530,10 +530,10 @@ A <<= 1; // 0b00110000 (dịch trái 1 bit)
 #define HAT           1 << 2  // 00000001 << 2 = 00000100
 #define SHOES         1 << 3  // 
 
-#define FEATURE1      1 << 4  // Bit 5
-#define FEATURE2      1 << 5  // Bit 6
-#define FEATURE3      1 << 6  // Bit 7
-#define FEATURE4      1 << 7  // Bit 8
+#define FEATURE1      1 << 4  // Bit 5 mang thông tin Feature1
+#define FEATURE2      1 << 5  // Bit 6 mang thông tin Feature2
+#define FEATURE3      1 << 6  // Bit 7 mang thông tin Feature3
+#define FEATURE4      1 << 7  // Bit 8 mang thông tin Feature4
 
 void enableFeature(uint8_t *features, uint8_t feature) { // Hàm bật
     *features |= feature; // *feature = *feature | feature
