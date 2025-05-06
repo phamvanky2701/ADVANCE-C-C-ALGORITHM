@@ -2,7 +2,6 @@
 
 <details>
   <summary>📂 Bài 1: Compiler + Macro</summary>
-    <summary>📂 Bài 1: Compiler + Macro</summary>
 
   ## Compiler
   **Định Nghĩa:** Compiler là quá trình chuyển đổi từ ngôn ngữ bậc cao (C, C++, Java...) sang ngôn ngữ bậc thấp (mã máy - 00011101), giúp chương trình hiểu và thực thi được.
@@ -460,142 +459,39 @@ PS D:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert>
 
 
 
-</details>
-  <summary>📂 Bài 3: Bit Mask trong C </summary>
-
-## I.Khái niệm
-**Bit mask** là kỹ thuật thao tác trực tiếp trên các **bit riêng lẻ** của một biến, thường dùng để quản lý **trạng thái (flags)** hoặc **thuộc tính** trong cùng một biến số nguyên. Bit mask giúp dễ dàng thay đổi, kiểm tra, hoặc xóa trạng thái của các bit cụ thể mà không làm ảnh hưởng đến các bit khác.
-
-## II.Ưu điểm
-- **Tối ưu bộ nhớ**: Dùng chỉ 1 byte (hoặc ít hơn) để lưu trữ nhiều thuộc tính khác nhau.
-- **Hiệu suất cao**: Các phép toán bitwise thực thi rất nhanh, có thể thao tác trên nhiều trạng thái cùng lúc.
-- **Dễ dàng mở rộng**: Có thể thêm nhiều tính năng mà không cần thay đổi cấu trúc dữ liệu.
-
-## III.Quy ước kích thước biến
-| Kiểu dữ liệu       | Kích thước | Số bit |
-|--------------------|------------|--------|
-| `int8_t`, `uint8_t` | 1 byte     | 8 bit  |
-| `int16_t`, `uint16_t` | 2 byte   | 16 bit |
-
-## IV.Các phép toán Bitwise
-![image](https://github.com/user-attachments/assets/1111e2f8-87db-47f4-813d-067f279a6960)
-
-### Ví dụ : Toán tử Bitwise
-
-```c
-uint8_t user1 = 0b00001110;
-uint8_t user2 = 0b10101001;
-
-// Toán tử NOT (~)
-user1 = ~user2;  // 0b01010110
-
-// Toán tử AND (&)
-user1 = user1 & user2;  // 0b00000000
-
-// Toán tử OR (|)
-user1 = user1 | user2;  // 0b10101111
-
-// Toán tử XOR (^)
-user1 = user1 ^ user2;  // 0b10100111
-
-A = 0b00011000;
-A >>= 1; // 0b00001100 (dịch sang phải 1 bit)
-
-A = 0b00011000;
-A <<= 1; // 0b00110000 (dịch sang trái 1 bit)
-```
-
-```c
-
-### **Ví dụ:**
-```c
 #include <stdio.h>
 #include <stdint.h>
 
-// Quy định từng bit mang 1 thông tin khác nhau 
+// Quy định từng bit mang 1 thông tin khác nhau
+#define GENDER        (1 << 0)  // 00000001
+#define TSHIRT        (1 << 1)  // 00000010
+#define HAT           (1 << 2)  // 00000100
+#define SHOES         (1 << 3)  // 00001000
+#define FEATURE1      (1 << 4)  // 00010000
+#define FEATURE2      (1 << 5)  // 00100000
+#define FEATURE3      (1 << 6)  // 01000000
+#define FEATURE4      (1 << 7)  // 10000000
 
-#define GENDER        1 << 0  // 00000001 << 0 = 00000001
-#define TSHIRT        1 << 1  // 00000001 << 1 = 00000010
-#define HAT           1 << 2  // 00000001 << 2 = 00000100
-#define SHOES         1 << 3  // 
-
-#define FEATURE1      1 << 4  // Bit 5
-#define FEATURE2      1 << 5  // Bit 6
-#define FEATURE3      1 << 6  // Bit 7
-#define FEATURE4      1 << 7  // Bit 8
-
-void enableFeature(uint8_t *features, uint8_t feature) { // Hàm bật
-    *features |= feature; // *feature = *feature | feature
-    /*features = 00000000  
-      feature  = 00000101  (bật bit 0 và 2)  
-      Kết quả  = 00000101 */
-
+// Hàm bật tính năng
+void enableFeature(uint8_t *features, uint8_t feature) {
+    *features |= feature;
 }
 
-void disableFeature(uint8_t *features, uint8_t feature) { // Hàm tắt
+// Hàm tắt tính năng
+void disableFeature(uint8_t *features, uint8_t feature) {
     *features &= ~feature;
-    /*features = 00000111  
-      feature  = 00000010  (muốn tắt bit 1)  
-      ~feature = 11111101  
-      &        = 00000101  (bit 1 bị tắt)
-    */
 }
 
-
-int isFeatureEnabled(uint8_t features, uint8_t feature) { // Hàm kiếm tra tính năng có được bật tắt hay không ?
+// Hàm kiểm tra tính năng có bật không
+int isFeatureEnabled(uint8_t features, uint8_t feature) {
     return (features & feature) != 0;
 }
 
-void listSelectedFeatures(uint8_t features) { // Hàm liệt kê các tính năng đã chọn !!!
+// Hàm liệt kê các tính năng đã bật
+void listSelectedFeatures(uint8_t features) {
     printf("Selected Features:\n");
 
-    if (features & GENDER) { // 00000101 & 00000001 = 00000001 (Nếu kết quả khác 0 thì đk đúng !!!)
+    if (features & GENDER) {
         printf("- Gender\n");
     }
-    if (features & TSHIRT) { // 00000101 & 00000010 = 00000000
-        printf("- T-Shirt\n");
-    }
-    if (features & HAT) {
-        printf("- Hat\n");
-    }
-    if (features & SHOES) {
-        printf("- Shoes\n");
-    }
-
-    for (int i = 0; i < 8; i++)
-    {
-        printf("feature selected: %d\n", (features >> i) & 1); // In ra trạng thái của bit !!!
-    }
-    
-
-    // Thêm các điều kiện kiểm tra cho các tính năng khác
-}
-
-
-
-int main() {
-    uint8_t options = 0;
-
-    // Thêm tính năng 
-    enableFeature(&options, GENDER | TSHIRT | HAT); // Hàm bật 
-    /*= 00000001 | 00000010 | 00000100
-      = 00000111
-    */
-    
-    disableFeature(&options, TSHIRT); // Hàm tắt
-    /* = 00000001*/
-
-    // Liệt kê các tính năng đã chọn
-    listSelectedFeatures(options);
-    
-    return 0;
-}
-
-```
-
-```c
-
-
-
-<details>
 
