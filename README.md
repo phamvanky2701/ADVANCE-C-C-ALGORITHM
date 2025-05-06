@@ -476,8 +476,8 @@ PS D:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert>
 |----------------------|------------|--------|
 | `int8_t`, `uint8_t`   | 1 byte     | 8 bit  |
 | `int16_t`, `uint16_t` | 2 byte     | 16 bit |
-
-## IV. Các phép toán Bitwise
+| `int32_t`, `uint32_t` | 4 byte     | 32 bit |
+## IV. Các phép toán Bitwise - Bảng Chân Trị
 
 ![Bitwise Operators](https://github.com/user-attachments/assets/1111e2f8-87db-47f4-813d-067f279a6960)
 
@@ -500,8 +500,14 @@ user1 = user1 | user2;  // 0b10101111
 user1 = user1 ^ user2;  // 0b10100111
 
 // Dịch bit
+Dịch sang phải : Loại bớt số lượng phần tử n ở đầu bên phải và thêm số lượng phần tử (n) 0  vào bên trái
+≫ ( Dịch sang phải ) 
+
 uint8_t A = 0b00011000;
 A >>= 1; // 0b00001100 (dịch phải 1 bit)
+
+Dịch sang trái : : Loại bớt số lượng phần tử n ở đầu bên trái và thêm số lượng phần tử (n) 0  vào bên phải
+≪ ( Dịch sang trái )
 
 A = 0b00011000;
 A <<= 1; // 0b00110000 (dịch trái 1 bit)
