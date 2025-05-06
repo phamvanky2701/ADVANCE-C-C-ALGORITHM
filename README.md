@@ -458,24 +458,24 @@ PS D:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert>
 </details>
 
 </details>
-
   <summary>📂 Bài 3: Bit Mask trong C</summary>
 
-## 📌 Khái niệm
+## I.Khái niệm
 **Bit mask** là kỹ thuật thao tác trực tiếp trên các **bit riêng lẻ** của một biến, thường dùng để quản lý **trạng thái (flags)** hoặc **thuộc tính** trong cùng một biến số nguyên. Bit mask giúp dễ dàng thay đổi, kiểm tra, hoặc xóa trạng thái của các bit cụ thể mà không làm ảnh hưởng đến các bit khác.
 
-## ✅ Ưu điểm
+## II.Ưu điểm
 - **Tối ưu bộ nhớ**: Dùng chỉ 1 byte (hoặc ít hơn) để lưu trữ nhiều thuộc tính khác nhau.
 - **Hiệu suất cao**: Các phép toán bitwise thực thi rất nhanh, có thể thao tác trên nhiều trạng thái cùng lúc.
 - **Dễ dàng mở rộng**: Có thể thêm nhiều tính năng mà không cần thay đổi cấu trúc dữ liệu.
 
-## 🧠 Quy ước kích thước biến
+## III.Quy ước kích thước biến
 | Kiểu dữ liệu       | Kích thước | Số bit |
 |--------------------|------------|--------|
 | `int8_t`, `uint8_t` | 1 byte     | 8 bit  |
 | `int16_t`, `uint16_t` | 2 byte   | 16 bit |
 
 ## 🧮 Các phép toán Bitwise
+![image](https://github.com/user-attachments/assets/1111e2f8-87db-47f4-813d-067f279a6960)
 
 ### Toán tử Bitwise
 
