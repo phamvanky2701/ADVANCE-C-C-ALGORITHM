@@ -459,6 +459,52 @@ PS D:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert>
 
 
 
+<details>
+  <summary>📂 Bài 3: Bit Mask trong C</summary>
+
+## I. Khái niệm
+**Bit mask** là kỹ thuật thao tác trực tiếp trên các **bit riêng lẻ** của một biến, thường dùng để quản lý **trạng thái (flags)** hoặc **thuộc tính** trong cùng một biến số nguyên. Bit mask giúp dễ dàng thay đổi, kiểm tra, hoặc xóa trạng thái của các bit cụ thể mà không làm ảnh hưởng đến các bit khác.
+
+## II. Ưu điểm
+- **Tối ưu bộ nhớ**: Dùng chỉ 1 byte (hoặc ít hơn) để lưu trữ nhiều thuộc tính khác nhau.
+- **Hiệu suất cao**: Các phép toán bitwise thực thi rất nhanh, có thể thao tác trên nhiều trạng thái cùng lúc.
+- **Dễ dàng mở rộng**: Có thể thêm nhiều tính năng mà không cần thay đổi cấu trúc dữ liệu.
+
+## III. Quy ước kích thước biến
+| Kiểu dữ liệu         | Kích thước | Số bit |
+|----------------------|------------|--------|
+| `int8_t`, `uint8_t`   | 1 byte     | 8 bit  |
+| `int16_t`, `uint16_t` | 2 byte     | 16 bit |
+
+## IV. Các phép toán Bitwise
+
+![Bitwise Operators](https://github.com/user-attachments/assets/1111e2f8-87db-47f4-813d-067f279a6960)
+
+### Ví dụ: Toán tử Bitwise
+
+```c
+uint8_t user1 = 0b00001110;
+uint8_t user2 = 0b10101001;
+
+// Toán tử NOT (~)
+user1 = ~user2;  // 0b01010110
+
+// Toán tử AND (&)
+user1 = user1 & user2;  // 0b00000000
+
+// Toán tử OR (|)
+user1 = user1 | user2;  // 0b10101111
+
+// Toán tử XOR (^)
+user1 = user1 ^ user2;  // 0b10100111
+
+// Dịch bit
+uint8_t A = 0b00011000;
+A >>= 1; // 0b00001100 (dịch phải 1 bit)
+
+A = 0b00011000;
+A <<= 1; // 0b00110000 (dịch trái 1 bit)
+
 #include <stdio.h>
 #include <stdint.h>
 
@@ -494,4 +540,36 @@ void listSelectedFeatures(uint8_t features) {
     if (features & GENDER) {
         printf("- Gender\n");
     }
+    if (features & TSHIRT) {
+        printf("- T-Shirt\n");
+    }
+    if (features & HAT) {
+        printf("- Hat\n");
+    }
+    if (features & SHOES) {
+        printf("- Shoes\n");
+    }
+
+    // In ra trạng thái của từng bit
+    for (int i = 0; i < 8; i++) {
+        printf("Feature %d: %d\n", i + 1, (features >> i) & 1);
+    }
+}
+
+int main() {
+    uint8_t options = 0;
+
+    // Bật tính năng GENDER, TSHIRT và HAT
+    enableFeature(&options, GENDER | TSHIRT | HAT); // 00000111
+
+    // Tắt tính năng TSHIRT
+    disableFeature(&options, TSHIRT); // 00000101
+
+    // Liệt kê các tính năng đã bật
+    listSelectedFeatures(options);
+
+    return 0;
+}
+
+</details> ```
 
