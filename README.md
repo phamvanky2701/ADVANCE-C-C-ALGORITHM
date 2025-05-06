@@ -523,39 +523,47 @@ A <<= 1; // 0b00110000 (dịch trái 1 bit)
 #include <stdio.h>
 #include <stdint.h>
 
-// Quy định từng bit mang 1 thông tin khác nhau
-#define GENDER        (1 << 0)  // 00000001
-#define TSHIRT        (1 << 1)  // 00000010
-#define HAT           (1 << 2)  // 00000100
-#define SHOES         (1 << 3)  // 00001000
-#define FEATURE1      (1 << 4)  // 00010000
-#define FEATURE2      (1 << 5)  // 00100000
-#define FEATURE3      (1 << 6)  // 01000000
-#define FEATURE4      (1 << 7)  // 10000000
+// Quy định từng bit mang 1 thông tin khác nhau 
 
-// Hàm bật tính năng
-void enableFeature(uint8_t *features, uint8_t feature) {
-    *features |= feature;
+#define GENDER        1 << 0  // 00000001 << 0 = 00000001
+#define TSHIRT        1 << 1  // 00000001 << 1 = 00000010
+#define HAT           1 << 2  // 00000001 << 2 = 00000100
+#define SHOES         1 << 3  // 
+
+#define FEATURE1      1 << 4  // Bit 5
+#define FEATURE2      1 << 5  // Bit 6
+#define FEATURE3      1 << 6  // Bit 7
+#define FEATURE4      1 << 7  // Bit 8
+
+void enableFeature(uint8_t *features, uint8_t feature) { // Hàm bật
+    *features |= feature; // *feature = *feature | feature
+    /*features = 00000000  
+      feature  = 00000101  (bật bit 0 và 2)  
+      Kết quả  = 00000101 */
+
 }
 
-// Hàm tắt tính năng
-void disableFeature(uint8_t *features, uint8_t feature) {
+void disableFeature(uint8_t *features, uint8_t feature) { // Hàm tắt
     *features &= ~feature;
+    /*features = 00000111  
+      feature  = 00000010  (muốn tắt bit 1)  
+      ~feature = 11111101  
+      &        = 00000101  (bit 1 bị tắt)
+    */
 }
 
-// Hàm kiểm tra tính năng có bật không
-int isFeatureEnabled(uint8_t features, uint8_t feature) {
+
+int isFeatureEnabled(uint8_t features, uint8_t feature) { // Hàm kiếm tra tính năng có được bật tắt hay không ?
     return (features & feature) != 0;
 }
 
-// Hàm liệt kê các tính năng đã bật
-void listSelectedFeatures(uint8_t features) {
+void listSelectedFeatures(uint8_t features) { // Hàm liệt kê các tính năng đã chọn !!!
     printf("Selected Features:\n");
 
-    if (features & GENDER) {
+    if (features & GENDER) { // 00000101 & 00000001 = 00000001 (Nếu kết quả khác 0 thì đk đúng, thì dòng lệnh được thực thi và ngược lại !!!)
         printf("- Gender\n");
     }
-    if (features & TSHIRT) {
+    if (features & TSHIRT) { // 00000101 & 00000010 = 00000000
         printf("- T-Shirt\n");
     }
     if (features & HAT) {
@@ -565,25 +573,35 @@ void listSelectedFeatures(uint8_t features) {
         printf("- Shoes\n");
     }
 
-    // In ra trạng thái của từng bit
-    for (int i = 0; i < 8; i++) {
-        printf("Feature %d: %d\n", i + 1, (features >> i) & 1);
+    for (int i = 0; i < 8; i++)
+    {
+        printf("feature selected: %d\n", (features >> i) & 1); // In ra trạng thái của bit !!!
     }
+    
+
+    // Thêm các điều kiện kiểm tra cho các tính năng khác
 }
+
+
 
 int main() {
     uint8_t options = 0;
 
-    // Bật tính năng GENDER, TSHIRT và HAT
-    enableFeature(&options, GENDER | TSHIRT | HAT); // 00000111
+    // Thêm tính năng 
+    enableFeature(&options, GENDER | TSHIRT | HAT); // Hàm bật thêm các sản phẩm
+    /*= 00000001 | 00000010 | 00000100
+      = 00000111
+    */
+    
+    disableFeature(&options, TSHIRT); // Hàm tắt xóa các sản phẩm
+    /* = 00000001*/
 
-    // Tắt tính năng TSHIRT
-    disableFeature(&options, TSHIRT); // 00000101
-
-    // Liệt kê các tính năng đã bật
+    // Liệt kê các tính năng đã chọn
     listSelectedFeatures(options);
-
+    
     return 0;
+}
+
 }
 ```
 
