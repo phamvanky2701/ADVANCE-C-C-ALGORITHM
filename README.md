@@ -455,10 +455,10 @@ PS D:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert>
 
 ---
 
-
 </details>
 
-# Bài 3: Bit Mask trong C
+</details>
+  <summary>📂 Bài 3: Bit Mask trong C</summary>
 
 ## 📌 Khái niệm
 **Bit mask** là kỹ thuật thao tác trực tiếp trên các **bit riêng lẻ** của một biến, thường dùng để quản lý **trạng thái (flags)** hoặc **thuộc tính** trong cùng một biến số nguyên. Bit mask giúp dễ dàng thay đổi, kiểm tra, hoặc xóa trạng thái của các bit cụ thể mà không làm ảnh hưởng đến các bit khác.
@@ -499,8 +499,11 @@ A >>= 1; // 0b00001100 (dịch sang phải 1 bit)
 
 A = 0b00011000;
 A <<= 1; // 0b00110000 (dịch sang trái 1 bit)
+```
 
-### **Ví dụ:**
+```c
+
+## **Ví dụ:
 ```c
 #include <stdio.h>
 #include <stdint.h>
