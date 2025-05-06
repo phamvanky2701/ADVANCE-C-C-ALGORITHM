@@ -458,7 +458,7 @@ PS D:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert>
 </details>
 
 </details>
-  <summary>📂 Bài 3: Bit Mask trong C</summary>
+  <summary>📂 Bài 3: Bit Mask trong C </summary>
 
 ## I.Khái niệm
 **Bit mask** là kỹ thuật thao tác trực tiếp trên các **bit riêng lẻ** của một biến, thường dùng để quản lý **trạng thái (flags)** hoặc **thuộc tính** trong cùng một biến số nguyên. Bit mask giúp dễ dàng thay đổi, kiểm tra, hoặc xóa trạng thái của các bit cụ thể mà không làm ảnh hưởng đến các bit khác.
@@ -474,10 +474,10 @@ PS D:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert>
 | `int8_t`, `uint8_t` | 1 byte     | 8 bit  |
 | `int16_t`, `uint16_t` | 2 byte   | 16 bit |
 
-## 🧮 Các phép toán Bitwise
+## IV.Các phép toán Bitwise
 ![image](https://github.com/user-attachments/assets/1111e2f8-87db-47f4-813d-067f279a6960)
 
-### Toán tử Bitwise
+### Ví dụ : Toán tử Bitwise
 
 ```c
 uint8_t user1 = 0b00001110;
