@@ -457,6 +457,8 @@ PS D:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert>
 
 </details>
 
+
+
 </details>
   <summary>📂 Bài 3: Bit Mask trong C </summary>
 
@@ -591,6 +593,8 @@ int main() {
 ```
 
 ```c
+
+
 
 <details>
 
