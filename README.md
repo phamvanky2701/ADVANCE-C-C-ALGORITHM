@@ -458,6 +458,7 @@ PS D:\LAP_TRINH_C_C++\STDARG - ASSERT\thuvien_assert>
 </details>
 
 </details>
+
   <summary>📂 Bài 3: Bit Mask trong C</summary>
 
 ## 📌 Khái niệm
@@ -503,7 +504,7 @@ A <<= 1; // 0b00110000 (dịch sang trái 1 bit)
 
 ```c
 
-## **Ví dụ:
+### **Ví dụ:**
 ```c
 #include <stdio.h>
 #include <stdint.h>
@@ -590,5 +591,6 @@ int main() {
 ```
 
 ```c
-  <details>
+
+<details>
 
