@@ -590,4 +590,5 @@ int main() {
 ```
 
 ```c
-  
+  <details>
+
